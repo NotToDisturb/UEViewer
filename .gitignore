@@ -3,6 +3,7 @@ data
 data/
 obj/
 bak/
+bin/
 
 # Generated files
 Unreal/Shaders.h
@@ -36,6 +37,7 @@ umodel*.pdb
 Tools/**/*.exe
 Tools/**/*.pdb
 *todo.md
+build_ueviewer.bat
 
 # UI_Dev
 Tools/UITest/vs/Debug/

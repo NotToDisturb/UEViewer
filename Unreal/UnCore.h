@@ -495,11 +495,16 @@ enum EGame
 		GAME_Borderlands3 = GAME_UE4(20)+1,
 		// 4.21
 		GAME_Jedi = GAME_UE4(21)+1,
+		// 4.24
+		GAME_Valorant_2_02 = GAME_UE4(24)+1,
 		// 4.25
 		GAME_UE4_25_Plus = GAME_UE4(25)+1,
+		GAME_Valorant_UE_4_25 = GAME_UE4(25)+2,
+		GAME_Valorant_4_04 = GAME_UE4(25)+3,
 		// 4.26
 		GAME_Dauntless = GAME_UE4(26)+1,
-		GAME_Valorant = GAME_UE4(26)+2,
+		GAME_Valorant_UE_4_26 = GAME_UE4(26)+2,
+		GAME_Valorant_6_01 = GAME_UE4(26)+3,
 
 	GAME_ENGINE    = 0xFFF0000	// mask for game engine
 };

@@ -150,35 +150,40 @@
 
 #if UNREAL4
 
-#define GEARS4			1		// Gears of War 4
-#define DAYSGONE		1		// Days Gone
-#define TEKKEN7			1		// Tekken 7
-#define LAWBREAKERS		1		// Lawbreakers
-#define SOD2			1		// State of Decay 2
-#define DAUNTLESS		1		// Dauntless
-#define PARAGON			1		// Paragon
-#define UT4				1		// Unreal Tournament 4
-#define ARK				1		// Ark: Survival Evolved
-#define HIT				1		// Heroes of Incredible Tales
-#define NGB				1		// New Gundam Breaker
-#define LIS2			1		// Life is Strange 2
-#define ASC_ONE			1		// Ascendant One
-#define BORDERLANDS3	1		// Borderlands 3
-#define KH3				1		// Kingdom Hearts 3
-#define JEDI			1		// Star Wars Jedi: Fallen Order
-#define SEAOFTHIEVES	1		// Sea of Thieves
-#define VALORANT        1       // VALORANT
+#define GEARS4			    1		// Gears of War 4
+#define DAYSGONE		    1		// Days Gone
+#define TEKKEN7			    1		// Tekken 7
+#define LAWBREAKERS		    1		// Lawbreakers
+#define SOD2			    1		// State of Decay 2
+#define DAUNTLESS		    1		// Dauntless
+#define PARAGON			    1		// Paragon
+#define UT4				    1		// Unreal Tournament 4
+#define ARK				    1		// Ark: Survival Evolved
+#define HIT				    1		// Heroes of Incredible Tales
+#define NGB				    1		// New Gundam Breaker
+#define LIS2			    1		// Life is Strange 2
+#define ASC_ONE			    1		// Ascendant One
+#define BORDERLANDS3	    1		// Borderlands 3
+#define KH3				    1		// Kingdom Hearts 3
+#define JEDI			    1		// Star Wars Jedi: Fallen Order
+#define SEAOFTHIEVES	    1		// Sea of Thieves
+#define VALORANT            1       // VALORANT
+#define VALORANT_2_02       1       // VALORANT (4.24) 2.02+
+#define VALORANT_UE_4_25    1       // VALORANT (4.25)
+#define VALORANT_4_04       1       // VALORANT (4.25) 4.04+
+#define VALORANT_UE_4_26    1       // VALORANT (4.26)
+#define VALORANT_6_01       1       // VALORANT (4.26) 6.01+
 
-#define SPECIAL_TAGS	1		// games with different PACKAGE_FILE_TAG
+#define SPECIAL_TAGS	    1		// games with different PACKAGE_FILE_TAG
 
 #endif // UNREAL4
 
 #if GEARS4 || BATMAN || UNREAL4
-#define USE_LZ4			1		// LZ4 compression
+#define USE_LZ4			    1		// LZ4 compression
 #endif
 
 #if SMITE || UNREAL4
-#define USE_OODLE		1		// Oodle compression
+#define USE_OODLE		    1		// Oodle compression
 #endif
 
 #endif // __GAME_DEFINES_H__

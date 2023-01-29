@@ -416,8 +416,20 @@ const GameInfo GListOfGames[] = {
 #	if SEAOFTHIEVES
 		G("Sea of Thieves", sot, GAME_SeaOfThieves),
 #	endif
-#	if VALORANT
-		G("VALORANT", valorant, GAME_Valorant),
+#	if VALORANT_2_02
+		G("VALORANT (4.24) 2.02+", valorant-ue4.24-2.02+, GAME_Valorant_2_02),
+#	endif
+#	if VALORANT_UE_4_25
+		G("VALORANT (4.25)", valorant-ue4.25, GAME_Valorant_UE_4_25),
+#	endif
+#	if VALORANT_4_04
+		G("VALORANT (4.25) 4.04+", valorant-ue4.25-4.04+, GAME_Valorant_4_04),
+#	endif
+#	if VALORANT_UE_4_26
+		G("VALORANT (4.26)", valorant-ue4.26, GAME_Valorant_UE_4_26),
+#	endif
+#	if VALORANT_6_01
+		G("VALORANT (4.26) 6.01+", valorant-ue4.26-6.01+, GAME_Valorant_6_01),
 #	endif
 #endif // UNREAL4
 
