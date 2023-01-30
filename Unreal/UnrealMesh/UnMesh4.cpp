@@ -132,13 +132,12 @@ struct FPositionVertexBuffer4
 		if (Ar.Game == GAME_Valorant_4_04 || Ar.Game == GAME_Valorant_UE_4_26 || Ar.Game == GAME_Valorant_6_01)
 		{
 			int bUseFullPrecisionPositions;
-			if (Ar.Game == GAME_Valorant_4_04 || Ar.Game == GAME_Valorant_UE_4_26){
-				Ar << bUseFullPrecisionPositions;
-			}
-			else{
+			Ar << bUseFullPrecisionPositions;
+			if (Ar.Game == GAME_Valorant_6_01){
 				FBoxSphereBounds Bounds;
-				Ar << bUseFullPrecisionPositions << Bounds;
+				Ar << Bounds;
 			}
+
 			if (!bUseFullPrecisionPositions)
 			{
 				TArray<FVector4Half> PackedVerts;
