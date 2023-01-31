@@ -167,7 +167,7 @@
 #define KH3				    1		// Kingdom Hearts 3
 #define JEDI			    1		// Star Wars Jedi: Fallen Order
 #define SEAOFTHIEVES	    1		// Sea of Thieves
-#define VALORANT            1       // VALORANT
+#define VALORANT            1       // VALORANT latest
 #define VALORANT_2_02       1       // VALORANT (4.24) 2.02+
 #define VALORANT_UE_4_25    1       // VALORANT (4.25)
 #define VALORANT_4_04       1       // VALORANT (4.25) 4.04+

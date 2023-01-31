@@ -416,6 +416,9 @@ const GameInfo GListOfGames[] = {
 #	if SEAOFTHIEVES
 		G("Sea of Thieves", sot, GAME_SeaOfThieves),
 #	endif
+#	if VALORANT
+		G("VALORANT latest", valorant, GAME_Valorant),
+#	endif
 #	if VALORANT_2_02
 		G("VALORANT (4.24) 2.02+", valorant-ue4.24-2.02+, GAME_Valorant_2_02),
 #	endif

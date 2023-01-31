@@ -60,7 +60,7 @@ function SetupDefaultProject()
 	root="."
 	render=1
 	if [ -z "$ExeName" ]; then
-		ExeName="umodel"
+		ExeName="umodel_valorant"
 		[ "$debug" ] && ExeName+="-debug"
 		[ "$profile" ] && ExeName+="-profile"
 		[ "$PLATFORM" == "vc-win64" ] && ExeName+="_64"
@@ -91,7 +91,7 @@ function GetBuildNumber()
 				git=`type -p git`
 			fi
 		fi
-		[ "$git" ] && revision=`git rev-list --count HEAD`"-floxay"
+		[ "$git" ] && revision=`git rev-list --count HEAD`"-floxay-bcomp"
 		DebugPrint "Git revision: $revision"
 	fi
 
