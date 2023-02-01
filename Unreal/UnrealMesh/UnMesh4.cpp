@@ -129,7 +129,7 @@ struct FPositionVertexBuffer4
 #endif // DAYSGONE
 
 #if VALORANT
-		if (Ar.Game == GAME_Valorant_4_04 || Ar.Game == GAME_Valorant_UE_4_26 || Ar.Game == GAME_Valorant_6_01 || Ar.Game == GAME_Valorant)
+		if (Ar.Game == GAME_Valorant_4_04 || Ar.Game == GAME_Valorant_UE4_26 || Ar.Game == GAME_Valorant_6_01 || Ar.Game == GAME_Valorant)
 		{
 			int bUseFullPrecisionPositions;
 			Ar << bUseFullPrecisionPositions;

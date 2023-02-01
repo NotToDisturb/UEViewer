@@ -195,8 +195,8 @@ void FPackageFileSummary::Serialize4(FArchive &Ar)
 	Ar << ThumbnailTableOffset;
 
 #if VALORANT
-	if (Ar.Game == GAME_Valorant_2_02 || Ar.Game == GAME_Valorant_UE_4_25 || Ar.Game == GAME_Valorant_4_04 ||
-	    Ar.Game == GAME_Valorant_UE_4_26 || Ar.Game == GAME_Valorant_6_01 || Ar.Game == GAME_Valorant) {
+	if (Ar.Game == GAME_Valorant_2_02 || Ar.Game == GAME_Valorant_UE4_25 || Ar.Game == GAME_Valorant_4_04 ||
+	    Ar.Game == GAME_Valorant_UE4_26 || Ar.Game == GAME_Valorant_6_01 || Ar.Game == GAME_Valorant) {
 		Ar.Seek(Ar.Tell()+8); // no idea what these bytes are used for
 	}
 #endif // VALORANT
