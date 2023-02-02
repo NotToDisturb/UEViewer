@@ -31,14 +31,14 @@
 
 #include "GameDatabase.h"
 #include "UnrealPackage/PackageUtils.h"
-
 #include "UmodelApp.h"
 #include "UmodelCommands.h"
 #include "Version.h"
 #include "MiscStrings.h"
 
 #define APP_CAPTION					"UE Viewer"
-
+#define LSIZ 128 
+#define RSIZ 2048
 //#define SHOW_HIDDEN_SWITCHES		1
 //#define DUMP_MEM_ON_EXIT			1
 
@@ -225,6 +225,12 @@ static void RegisterClasses(int game)
 		SuppressUnknownClass("UMaterial*");
 	}
 	if (!GSettings.Startup.UseMorphTarget) UnregisterClass("MorphTarget", false);
+	if (!GSettings.Startup.UseBlueprint)
+	{
+		UnregisterClass("BlueprintGeneratedClass", true);
+		UnregisterClass("Blueprint", true);
+		UnregisterClass("AnimationBlueprintGeneratedClass", true);
+	}
 	if (!GSettings.Startup.UseLightmapTexture) UnregisterClass("LightMapTexture2D", true);
 	if (!GSettings.Startup.UseScaleForm) UnregisterClass("SwfMovie", true);
 	if (!GSettings.Startup.UseFaceFx)
@@ -240,6 +246,27 @@ static void RegisterClasses(int game)
 -----------------------------------------------------------------------------*/
 
 
+// TArray<const char*> HandleFileListExport (const char* value)
+// {
+	
+// 	const char* KeyFile = value + 1;
+// 	FILE* f = fopen(KeyFile, "r");
+// 	TArray<const char*> FileArray;
+// 	if (f)
+// 	{
+// 		char buffer[1024];
+// 		while (!feof(f))
+// 		{
+// 			if (fgets(buffer, ARRAY_COUNT(buffer), f))
+// 			{
+// 				FileArray.Add(buffer);
+// 				appPrintf(buffer);
+// 			}
+// 		}
+
+// 	}
+// 	return FileArray;
+// }
 static void CallExportSkeletalMesh(const CSkeletalMesh* Mesh)
 {
 	assert(Mesh);
@@ -839,6 +866,7 @@ int main(int argc, const char **argv)
 			OPT_NBOOL("noanim",  GSettings.Startup.UseAnimation)
 			OPT_NBOOL("notex",   GSettings.Startup.UseTexture)
 			OPT_NBOOL("nomorph", GSettings.Startup.UseMorphTarget)
+			OPT_NBOOL("noblueprint", GSettings.Startup.UseBlueprint)
 			OPT_NBOOL("nolightmap", GSettings.Startup.UseLightmapTexture)
 			OPT_BOOL ("sounds",  GSettings.Startup.UseSound)
 			OPT_BOOL ("dds",     GSettings.Export.ExportDdsTexture)
@@ -926,6 +954,23 @@ int main(int argc, const char **argv)
 			const char *pkg = opt+4;
 			packagesToLoad.Add(pkg);
 		}
+        else if (!strnicmp(opt, "files=", 6))
+        {
+            const char* KeyFile = opt + 6;
+            FILE* file = fopen(KeyFile, "r");
+            if (file)
+            {
+                char buffer[256];
+                while (!feof(file))
+                {
+                    if (fgets(buffer, ARRAY_COUNT(buffer), file))
+                    {
+                        if (strstr(buffer, "\n")) packagesToLoad.Add(strtok(strdup(buffer), "\n"));
+                        else packagesToLoad.Add(strdup(buffer));
+                    }
+                }
+            }
+        }
 		else if (!strnicmp(opt, "obj=", 4))
 		{
 			const char *obj = opt+4;
@@ -987,7 +1032,6 @@ int main(int argc, const char **argv)
 			CommandLineError("invalid option: -%s", opt);
 		}
 	}
-
 	// Parse UMODEL [package_name [obj_name [class_name]]]
 	const char *argPkgName   = (params.Num() >= 1) ? params[0] : NULL;
 	const char *argObjName   = (params.Num() >= 2) ? params[1] : NULL;
@@ -1031,7 +1075,6 @@ int main(int argc, const char **argv)
 
 	TArray<UnPackage*> Packages;
 	TArray<UObject*> Objects;
-
 	if (argPkgName)
 	{
 		packagesToLoad.Insert(argPkgName, 0);
@@ -1091,6 +1134,7 @@ int main(int argc, const char **argv)
 			// won't handle this, but UnPackage::LoadPackage() has a possibility to find a
 			// package with a full file name.
 			UnPackage* Package = UnPackage::LoadPackage(packagesToLoad[i]);
+			appPrintf("WARNING: unable to find package %s\n", Package);
 			if (!Package)
 			{
 				appPrintf("WARNING: unable to find package %s\n", packagesToLoad[i]);
@@ -1215,6 +1259,7 @@ int main(int argc, const char **argv)
 					UObject *Obj = Package2->CreateExport(idx);
 					if (Obj)
 					{
+						appPrintf("Export object %s:  type %s\n", Obj->Name, Obj->GetClassName());
 						Objects.Add(Obj);
 #if RENDERING
 						if (objName == attachAnimName && (Obj->IsA("MeshAnimation") || Obj->IsA("AnimSet")))

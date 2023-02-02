@@ -1626,8 +1626,13 @@ struct FStaticLODModel4
 	#endif
 		FStripDataFlags StripFlags(Ar);
 
-		bool bIsLODCookedOut, bInlined;
-		Ar << bIsLODCookedOut << bInlined;
+		bool bInlined;
+		bool bIsLODCookedOut = false;
+		if (Ar.Game != GAME_Splitgate)
+		{
+			Ar << bIsLODCookedOut << bInlined;
+		}
+
 		DBG_SKEL("LOD CookedOut: %d Inlined: %d\n", bIsLODCookedOut, bInlined);
 
 		Ar << Lod.RequiredBones;
