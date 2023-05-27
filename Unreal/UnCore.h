@@ -510,8 +510,8 @@ enum EGame
 		GAME_Valorant_UE4_26 = GAME_UE4(26)+2,
 		GAME_Valorant_6_01 = GAME_UE4(26)+3,
 		// 4.27
-		GAME_Valorant_6_11 = GAME_UE4(27)+3,
-		GAME_Valorant = GAME_Valorant_6_11,
+		GAME_Valorant_UE4_27 = GAME_UE4(27)+1,
+		GAME_Valorant = GAME_Valorant_UE4_27,
 
 	GAME_ENGINE    = 0xFFF0000	// mask for game engine
 };

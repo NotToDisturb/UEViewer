@@ -423,6 +423,7 @@ const GameInfo GListOfGames[] = {
 		G("VALORANT (4.25) 4.04+", valorant-ue4.25-4.04+, GAME_Valorant_4_04),
 		G("VALORANT (4.26)", valorant-ue4.26, GAME_Valorant_UE4_26),
 		G("VALORANT (4.26) 6.01+", valorant-ue4.26-6.01+, GAME_Valorant_6_01),
+		G("VALORANT (4.27)", valorant-ue4.27, GAME_Valorant_UE4_27),
 #	endif
 #endif // UNREAL4
 
